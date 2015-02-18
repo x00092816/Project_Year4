@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Project4thYear.Models.Team>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LeagueID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Goals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeGoals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AwayGoals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstHalfGoals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondHalfGoals)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeagueID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Player)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeGoals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AwayGoals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstHalfGoals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondHalfGoals)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TeamID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TeamID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TeamID })
+        </td>
+    </tr>
+}
+
+</table>

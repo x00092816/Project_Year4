@@ -1,0 +1,114 @@
+﻿@model ProjectTest2.Models.Player
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Team.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Competition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Competition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Club)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Club)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Starts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Starts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinutesPlayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinutesPlayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YellowCard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YellowCard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YellowCardRedCard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YellowCardRedCard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RedCard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RedCard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assists)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assists)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnGoals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnGoals)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlayerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

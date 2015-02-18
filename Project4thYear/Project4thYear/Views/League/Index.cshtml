@@ -1,0 +1,88 @@
+﻿
+@model IEnumerable<Project4thYear.Models.League>
+
+@using System.Data.*;
+
+@{
+    ViewBag.Title = "League";
+}
+
+<h2>League</h2>
+
+<!-- You're gonna create a dropdown list with 2 values(2013/2014 and 2012/2013) -->
+<!-- When you select a value from the dropdown list, you can do a for loop with the value selected -->
+
+@*@Html.DisplayNameFor(model => model.Year)
+@foreach(var item in Model.Where(item => item.Year.Equals("2012/2013")))
+{
+    @Html.DisplayFor(modelItem => item.Year)
+    <br />
+}*@
+
+@*<select onchange="changeYear()">
+    <option value="2013/2014">2013/2014</option>
+    <option value="2012/2013">2012/2013</option>
+</select>*@
+
+@*<script>
+    function changeYear() {
+        if (option.value.Equals("2012/2013"))
+        {
+            alert("2012/2013")
+        }
+        else if (option.value.Equals("2013/2014")) {
+            alert("2013/2014")
+        }
+    };
+</script>*@
+
+@{var _db = Da}
+<form style="display:inline" name="dp1" method="post">
+    <select name="league1" class="dropdown">
+        
+        @foreach (var row in db.Query("SELECT Year FROM League")) {
+            <option value="@row.Year">@row.Year</option> 
+        }
+    </select>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>League</legend>
+        @@<div class="editor-label">
+            @Html.LabelFor(model => model.Year)
+        </div>
+        <div class="editor-field">
+           League Year Html.DropDownList("Year")
+        </div>
+    </fieldset>
+}*@

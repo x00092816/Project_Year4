@@ -1,0 +1,31 @@
+<div id="yearDiv">
+    <select id="change1" onchange="changeYear()">
+        <option value="null" selected="selected">Select Year</option>
+        <option value="2013/2014">2013/2014</option>
+        <option value="2012/2013">2012/2013</option>
+    </select>
+   
+</div>
+
+<div id="resultsDiv">
+
+</div>
+
+
+<script>
+    function changeYear() {
+
+        
+
+        var y = document.getElementById("change1");
+        if (y[y.selectedIndex].value == "2013/2014") {
+            $('#resultsDiv').load("http://localhost:4973/League/Results13_14 #result13_14");
+        }
+        else if (y[y.selectedIndex].value=="2012/2013" ){
+            $('#resultsDiv').load("http://localhost:4973/League/Results12_13 #result12_13");
+        }
+       
+    };
+</script>
+
+@*onchange="changeYear()*@
