@@ -16,6 +16,7 @@ namespace Project4thYear.Controllers
         private FootballContext db = new FootballContext();
 
         //GET: League
+        [HttpGet]
         public ActionResult Index()
         {
             //FootballContext db1 = new FootballContext();
@@ -23,16 +24,13 @@ namespace Project4thYear.Controllers
             //return View(db);
         }
 
-        public ActionResult Results13_14()
+       [HttpPost]
+        public ActionResult Index()
         {
             return View(db.Leagues.ToList());
         }
 
-        public ActionResult Results12_13()
-        {
-            return View(db.Leagues.ToList());
-        }
-
+       
         //public IEnumerable<String> GetYear(string year)
         //{
         //    var getYear = db.Leagues.Where(y => y.Year == year).Select(y => y.Year);
