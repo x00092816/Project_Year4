@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Project4thYear.Models.League>
+
+@{
+    ViewBag.Title = "Results12_13";
+}
+
+<div id="result12_13">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LeagueID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Club)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Played)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wins)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Draws)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Losses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoalsFor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoalsAgainst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoalDifference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Points)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Where(item => item.Year.Equals("2012/2013")))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeagueID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Club)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Played)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wins)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Draws)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Losses)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoalsFor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoalsAgainst)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoalDifference)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Points)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+
+

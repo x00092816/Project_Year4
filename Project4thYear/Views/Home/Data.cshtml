@@ -1,0 +1,31 @@
+﻿@model Project4thYear.Models.Data
+
+@{
+    ViewBag.Title = "Data";
+}
+
+@*<h2>CSV Bulk Upload</h2>
+    @*<% using (Html.BeginForm("upload","",FormMethod.Post, new {enctype="multipart/form-data"})){ %>*@
+
+@*<input type="file" name="FileUpload" />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />*@
+
+@*<%}    %>*@
+
+@*<p><%= Html.Encode(ViewData["Feedback"]) %></p>*@
+
+<form action="" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Upload</legend>
+        @*<label for="file">Filename:</label>
+            <input type="file" name="file" id="file" />*@
+        <input type="file" name="FileUpload" />
+        <br />
+        <input type="submit" name="Submit" id="Submit" value="Upload to Database" />
+
+        <h5>Remember to change the DestinationTableName in HomeController for League, Team and Player respectively</h5>
+
+        @*<input type="submit" />*@
+
+    </fieldset>
+</form>

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Project4thYear.Models.Player>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Competition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Club)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Starts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinutesPlayed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YellowCard)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YellowCardRedCard)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RedCard)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Goals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assists)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnGoals)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Competition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Club)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Starts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MinutesPlayed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YellowCard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YellowCardRedCard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RedCard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assists)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnGoals)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PlayerID }) |
+        </td>
+            @Html.ActionLink("Details", "Details", new { id=item.PlayerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlayerID })
+    </tr>
+}
+
+</table>
