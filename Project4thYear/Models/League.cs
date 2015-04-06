@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,11 @@ namespace Project4thYear.Models
 {
     public class League
     {
+        //[Key]
+        //public int LeagueRefID { get; set; }
         public int LeagueID { get; set; }
         //public int TeamID { get; set; }
+        public String LeagueName { get; set; }
         public string Year { get; set; }
         public string Club { get; set; }
         public int Played { get; set; }

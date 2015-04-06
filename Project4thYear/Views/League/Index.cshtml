@@ -11,8 +11,8 @@
 {
     <p>
         <div class="form-group">
-            Enter Team Year: @Html.TextBox("searchString")
-            <input type="submit" value=" Search" class="btn btn-primary btn-xs"/>
+            Enter Year: @Html.TextBox("searchString") 
+            <input type="submit" value=" Search" class="btn btn-primary btn-xs"/> Format: e.g. 2013/2014
         </div>
     </p>
 }
@@ -25,6 +25,9 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.LeagueID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeagueName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Year)
@@ -64,6 +67,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.LeagueID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeagueName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Year)

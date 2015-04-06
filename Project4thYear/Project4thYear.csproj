@@ -135,6 +135,26 @@
     <Compile Include="Migrations\201503171842266_InitialCreate.Designer.cs">
       <DependentUpon>201503171842266_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504020930342_NewIDAdded.cs" />
+    <Compile Include="Migrations\201504020930342_NewIDAdded.Designer.cs">
+      <DependentUpon>201504020930342_NewIDAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504020954070_IDChanged.cs" />
+    <Compile Include="Migrations\201504020954070_IDChanged.Designer.cs">
+      <DependentUpon>201504020954070_IDChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504021021543_IDsRemoved.cs" />
+    <Compile Include="Migrations\201504021021543_IDsRemoved.Designer.cs">
+      <DependentUpon>201504021021543_IDsRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504021121583_LeagueChanged.cs" />
+    <Compile Include="Migrations\201504021121583_LeagueChanged.Designer.cs">
+      <DependentUpon>201504021121583_LeagueChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504021123390_LeagueChangedColumn.cs" />
+    <Compile Include="Migrations\201504021123390_LeagueChangedColumn.Designer.cs">
+      <DependentUpon>201504021123390_LeagueChangedColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\League.cs" />
@@ -245,6 +265,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201503171842266_InitialCreate.resx">
       <DependentUpon>201503171842266_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504020930342_NewIDAdded.resx">
+      <DependentUpon>201504020930342_NewIDAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504020954070_IDChanged.resx">
+      <DependentUpon>201504020954070_IDChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504021021543_IDsRemoved.resx">
+      <DependentUpon>201504021021543_IDsRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504021121583_LeagueChanged.resx">
+      <DependentUpon>201504021121583_LeagueChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504021123390_LeagueChangedColumn.resx">
+      <DependentUpon>201504021123390_LeagueChangedColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
