@@ -8,6 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using Project4thYear.DAL;
 using Project4thYear.Models;
+using DotNet.Highcharts.Enums;
+using DotNet.Highcharts.Options;
+using DotNet.Highcharts.Helpers;
+using System.Drawing;
+using DotNet.Highcharts;
 
 namespace Project4thYear.Controllers
 {
@@ -29,25 +34,100 @@ namespace Project4thYear.Controllers
 
         public ActionResult Chart(int? id)
         {
-            Team t = new Team();
-            t = db.Teams.Where(p => p.TeamID == id).SingleOrDefault();
-            var total = from e in db.Teams
-                        where e.TeamID == id
+            League l = new League();
+            l = db.Leagues.Where(p => p.LeagueID == id).SingleOrDefault();
+            var total = from e in db.Leagues
+                        where e.LeagueID == id
                         select e;
 
             int size = total.Count();
-            object[] array = new object[size];
+            object[] oa = new object[size];
+            //string[] names = new string[size];
             int i = 0;
 
             foreach (var item in total)
             {
-                array[i] = item.Goals;
+                oa[i] = item.Points;
+                //names[i] = item.Team;
                 i++;
+
             }
 
-            
-            return View(db.Leagues.ToList());
+            Highcharts chart = new Highcharts("chart")
+                .InitChart(new Chart { Type = ChartTypes.Bar })
+                .SetTitle(new Title { Text = "Historic World Population by Region" })
+                .SetSubtitle(new Subtitle { Text = "Source: Wikipedia.org" })
+                .SetXAxis(new XAxis
+                {
+                    Categories = new[] { "Manchester City" },
+                    Title = new XAxisTitle { Text = string.Empty }
+                })
+                .SetYAxis(new YAxis
+                {
+                    Min = 0,
+                    Title = new YAxisTitle
+                    {
+                        Text = "Population (millions)",
+                        Align = AxisTitleAligns.High
+                    }
+                })
+                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +' millions'; }" })
+                .SetPlotOptions(new PlotOptions
+                {
+                    Bar = new PlotOptionsBar
+                    {
+                        DataLabels = new PlotOptionsBarDataLabels { Enabled = true }
+                    }
+                })
+                .SetLegend(new Legend
+                {
+                    Enabled = false
+                    //Layout = Layouts.Vertical,
+                    //Align = HorizontalAligns.Right,
+                    //VerticalAlign = VerticalAligns.Top,
+                    //X = -100,
+                    //Y = 100,
+                    //Floating = true,
+                    //BorderWidth = 1,
+                    //BackgroundColor = new BackColorOrGradient(ColorTranslator.FromHtml("#FFFFFF")),
+                    //Shadow = true
+                })
+                .SetCredits(new Credits { Enabled = false })
+                .SetSeries(new[]
+                {
+                    new Series {Data = new Data(new object[] {oa}) }
+                    //new Series { Name = "Year 1800", Data = new Data(new object[] { 107, 31, 635, 203, 2 }) },
+                    //new Series { Name = "Year 1900", Data = new Data(new object[] { 133, 156, 947, 408, 6 }) },
+                    //new Series { Name = "Year 2008", Data = new Data(new object[] { 973, 914, 4054, 732, 34 }) }
+                });
+
+            return View(chart);
+
+
+            //return View(db.Leagues.ToList());
         }
+
+        //public ActionResult Chart(int? id)
+        //{
+        //    Team t = new Team();
+        //    t = db.Teams.Where(p => p.TeamID == id).SingleOrDefault();
+        //    var total = from e in db.Teams
+        //                where e.TeamID == id
+        //                select e;
+
+        //    int size = total.Count();
+        //    object[] array = new object[size];
+        //    int i = 0;
+
+        //    foreach (var item in total)
+        //    {
+        //        array[i] = item.Goals;
+        //        i++;
+        //    }
+
+            
+        //    return View(db.Leagues.ToList());
+        //}
         //GET: League
         //[HttpGet]
         //public ActionResult LeagueGet()

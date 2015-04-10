@@ -156,7 +156,6 @@
       <DependentUpon>201504021123390_LeagueChangedColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Data.cs" />
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Team.cs" />
@@ -249,8 +248,7 @@
     <Content Include="Views\Player\Edit.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Home\Data.cshtml" />
-    <Content Include="Views\League\Results13_14.cshtml" />
-    <Content Include="Views\League\Results12_13.cshtml" />
+    <Content Include="Views\League\Chart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
