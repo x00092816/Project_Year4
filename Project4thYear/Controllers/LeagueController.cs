@@ -42,16 +42,17 @@ namespace Project4thYear.Controllers
 
             int size = total.Count();
             object[] oa = new object[size];
-            //string[] names = new string[size];
+            string[] names = new string[size];
             int i = 0;
 
             foreach (var item in total)
             {
                 oa[i] = item.Points;
-                //names[i] = item.Team;
+                names[i] = item.Club;
                 i++;
 
             }
+            //string name = l.Team;
 
             Highcharts chart = new Highcharts("chart")
                 .InitChart(new Chart { Type = ChartTypes.Bar })
@@ -59,7 +60,8 @@ namespace Project4thYear.Controllers
                 .SetSubtitle(new Subtitle { Text = "Source: Wikipedia.org" })
                 .SetXAxis(new XAxis
                 {
-                    Categories = new[] { "Manchester City" },
+                       //do for loop here - string[] Categories = new string[names.size]
+                    Categories = new[] { names[0] },
                     Title = new XAxisTitle { Text = string.Empty }
                 })
                 .SetYAxis(new YAxis
