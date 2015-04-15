@@ -41,69 +41,118 @@ namespace Project4thYear.Controllers
                         select e;
 
             int size = total.Count();
-            object[] oa = new object[size];
+            object[] oa1 = new object[size];
+            object[] oa2 = new object[size];
+
             string[] names = new string[size];
             int i = 0;
 
             foreach (var item in total)
             {
-                oa[i] = item.Points;
+                //oa[i] = item.Points;
+                oa1[i] = item.GoalsFor;
+                oa2[i] = item.GoalsAgainst;
                 names[i] = item.Club;
                 i++;
 
             }
+        
             //string name = l.Team;
-
-            Highcharts chart = new Highcharts("chart")
-                .InitChart(new Chart { Type = ChartTypes.Bar })
-                .SetTitle(new Title { Text = "" })
-                .SetSubtitle(new Subtitle { Text = "" })
-                .SetXAxis(new XAxis
-                {
-                       //do for loop here - string[] Categories = new string[names.size]
-                    Categories = new[] { names[0] },
-                    Title = new XAxisTitle { Text = string.Empty }
-                })
-                .SetYAxis(new YAxis
-                {
-                    Min = 0,
-                    Title = new YAxisTitle
-                    {
-                        Text = "Points",
-                        Align = AxisTitleAligns.High
-                    }
-                })
-                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +' points'; }" })
+             Highcharts chart = new Highcharts("chart")
+                .InitChart(new Chart { PlotShadow = false })
+                .SetTitle(new Title { Text = "Home and Away Goals Comparision" })
+                .SetTooltip(new Tooltip { Formatter = "function() { return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %'; }" })
                 .SetPlotOptions(new PlotOptions
                 {
-                    Bar = new PlotOptionsBar
+                    Pie = new PlotOptionsPie
                     {
-                        DataLabels = new PlotOptionsBarDataLabels { Enabled = true }
+                        AllowPointSelect = true,
+                        Cursor = Cursors.Pointer,
+                        DataLabels = new PlotOptionsPieDataLabels
+                        {
+                            Color = ColorTranslator.FromHtml("#000000"),
+                            ConnectorColor = ColorTranslator.FromHtml("#000000"),
+                            Formatter = "function() { }"
+                        }
                     }
                 })
-                .SetLegend(new Legend
+                .SetSeries(new Series
                 {
-                    Enabled = false
-                    //Layout = Layouts.Vertical,
-                    //Align = HorizontalAligns.Right,
-                    //VerticalAlign = VerticalAligns.Top,
-                    //X = -100,
-                    //Y = 100,
-                    //Floating = true,
-                    //BorderWidth = 1,
-                    //BackgroundColor = new BackColorOrGradient(ColorTranslator.FromHtml("#FFFFFF")),
-                    //Shadow = true
-                })
-                .SetCredits(new Credits { Enabled = false })
-                .SetSeries(new[]
-                {
-                    new Series {Data = new Data(new object[] {oa}) }
-                    //new Series { Name = "Year 1800", Data = new Data(new object[] { 107, 31, 635, 203, 2 }) },
-                    //new Series { Name = "Year 1900", Data = new Data(new object[] { 133, 156, 947, 408, 6 }) },
-                    //new Series { Name = "Year 2008", Data = new Data(new object[] { 973, 914, 4054, 732, 34 }) }
+                    Type = ChartTypes.Pie,
+                    Name = "",
+                    Data = new Data(new object[]
+                    {
+                        new object[] { oa1 },
+                        new object[] { oa2 }
+                        //new DotNet.Highcharts.Options.Point
+                        //{
+                        //    Name = "Chrome",
+                        //    Y = 12.8,
+                        //    Sliced = true,
+                        //    Selected = true
+                        //},
+                        //new object[] { "Safari", 8.5 },
+                        //new object[] { "Opera", 6.2 },
+                        //new object[] { "Others", 0.7 }
+                    })
                 });
 
             return View(chart);
+            
+        
+
+
+
+            //Highcharts chart = new Highcharts("chart")
+            //    .InitChart(new Chart { Type = ChartTypes.Bar })
+            //    .SetTitle(new Title { Text = "" })
+            //    .SetSubtitle(new Subtitle { Text = "" })
+            //    .SetXAxis(new XAxis
+            //    {
+            //           //do for loop here - string[] Categories = new string[names.size]
+            //        Categories = new[] { names[0] },
+            //        Title = new XAxisTitle { Text = string.Empty }
+            //    })
+            //    .SetYAxis(new YAxis
+            //    {
+            //        Min = 0,
+            //        Title = new YAxisTitle
+            //        {
+            //            Text = "Points",
+            //            Align = AxisTitleAligns.High
+            //        }
+            //    })
+            //    .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +' points'; }" })
+            //    .SetPlotOptions(new PlotOptions
+            //    {
+            //        Bar = new PlotOptionsBar
+            //        {
+            //            DataLabels = new PlotOptionsBarDataLabels { Enabled = true }
+            //        }
+            //    })
+            //    .SetLegend(new Legend
+            //    {
+            //        Enabled = false
+            //        //Layout = Layouts.Vertical,
+            //        //Align = HorizontalAligns.Right,
+            //        //VerticalAlign = VerticalAligns.Top,
+            //        //X = -100,
+            //        //Y = 100,
+            //        //Floating = true,
+            //        //BorderWidth = 1,
+            //        //BackgroundColor = new BackColorOrGradient(ColorTranslator.FromHtml("#FFFFFF")),
+            //        //Shadow = true
+            //    })
+            //    .SetCredits(new Credits { Enabled = false })
+            //    .SetSeries(new[]
+            //    {
+            //        new Series {Data = new Data(new object[] {oa}) }
+            //        //new Series { Name = "Year 1800", Data = new Data(new object[] { 107, 31, 635, 203, 2 }) },
+            //        //new Series { Name = "Year 1900", Data = new Data(new object[] { 133, 156, 947, 408, 6 }) },
+            //        //new Series { Name = "Year 2008", Data = new Data(new object[] { 973, 914, 4054, 732, 34 }) }
+            //    });
+
+            //return View(chart);
 
 
             //return View(db.Leagues.ToList());
