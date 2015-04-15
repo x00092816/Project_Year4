@@ -14,9 +14,10 @@ namespace Project4thYear.Models
         public int TeamID { get; set; }
         public int LeagueID { get; set; }
         //public int PlayerID { get; set; }
-        public string LeagueName { get; set; } 
+        public string LeagueName { get; set; }
+        public string Club { get; set; }
         public string Year { get; set; }
-        public string Player { get; set; }
+        public string Person { get; set; }
         public int Goals { get; set; }
         public int HomeGoals { get; set; }
         public int AwayGoals { get; set; }

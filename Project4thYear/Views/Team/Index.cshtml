@@ -4,7 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Team</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        <div class="form-group">
+            Enter Player Name: @Html.TextBox("searchString")
+            <input type="submit" value=" Search" class="btn btn-primary btn-sm" /> 
+        </div>
+    </p>
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        <div class="form-group">
+            Enter Team Name: @Html.TextBox("searchString")
+            <input type="submit" value=" Search" class="btn btn-primary btn-sm" />
+        </div>
+    </p>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -21,7 +41,10 @@
             @Html.DisplayNameFor(model => model.Year)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Player)
+            @Html.DisplayNameFor(model => model.Club)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Goals)
@@ -53,7 +76,10 @@
             @Html.DisplayFor(modelItem => item.Year)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Player)
+            @Html.DisplayFor(modelItem => item.Club)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Goals)

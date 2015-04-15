@@ -16,9 +16,15 @@ namespace Project4thYear.Controllers
         private FootballContext db = new FootballContext();
 
         // GET: Team
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Teams.ToList());
+            var res = from r in db.Teams select r;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                res = res.Where(s => s.Person.Contains(searchString));
+            }
+            return View(res);
+            //return View(db.Teams.ToList());
         }
 
         // GET: Team/Details/5

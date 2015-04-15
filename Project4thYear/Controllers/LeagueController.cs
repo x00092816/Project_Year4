@@ -56,8 +56,8 @@ namespace Project4thYear.Controllers
 
             Highcharts chart = new Highcharts("chart")
                 .InitChart(new Chart { Type = ChartTypes.Bar })
-                .SetTitle(new Title { Text = "Historic World Population by Region" })
-                .SetSubtitle(new Subtitle { Text = "Source: Wikipedia.org" })
+                .SetTitle(new Title { Text = "" })
+                .SetSubtitle(new Subtitle { Text = "" })
                 .SetXAxis(new XAxis
                 {
                        //do for loop here - string[] Categories = new string[names.size]
@@ -69,11 +69,11 @@ namespace Project4thYear.Controllers
                     Min = 0,
                     Title = new YAxisTitle
                     {
-                        Text = "Population (millions)",
+                        Text = "Points",
                         Align = AxisTitleAligns.High
                     }
                 })
-                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +' millions'; }" })
+                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +' points'; }" })
                 .SetPlotOptions(new PlotOptions
                 {
                     Bar = new PlotOptionsBar

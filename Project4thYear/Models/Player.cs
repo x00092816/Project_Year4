@@ -12,6 +12,7 @@ namespace Project4thYear.Models
         public int TeamID { get; set; }
         public string Year { get; set; }
         public string Competition { get; set; }
+        public string Person { get; set; }
         public string Club { get; set; }
         public int Starts { get; set; }
         public int MinutesPlayed { get; set; }

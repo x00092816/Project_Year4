@@ -155,7 +155,12 @@
     <Compile Include="Migrations\201504021123390_LeagueChangedColumn.Designer.cs">
       <DependentUpon>201504021123390_LeagueChangedColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504150941434_TeamAndPlayerModified.cs" />
+    <Compile Include="Migrations\201504150941434_TeamAndPlayerModified.Designer.cs">
+      <DependentUpon>201504150941434_TeamAndPlayerModified.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Data1.cs" />
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Team.cs" />
@@ -247,7 +252,7 @@
     <Content Include="Views\Player\Details.cshtml" />
     <Content Include="Views\Player\Edit.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
-    <Content Include="Views\Home\Data.cshtml" />
+    <Content Include="Views\Home\Data1.cshtml" />
     <Content Include="Views\League\Chart.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504021123390_LeagueChangedColumn.resx">
       <DependentUpon>201504021123390_LeagueChangedColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504150941434_TeamAndPlayerModified.resx">
+      <DependentUpon>201504150941434_TeamAndPlayerModified.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

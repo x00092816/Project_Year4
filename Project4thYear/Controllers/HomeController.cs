@@ -20,13 +20,13 @@ namespace Project4thYear.Controllers
             return View();
         }
 
-       public ActionResult Data()
+       public ActionResult Data1()
         {
             return View();
         }
 
        [HttpPost]
-       public ActionResult Data(HttpPostedFileBase FileUpload)
+       public ActionResult Data1(HttpPostedFileBase FileUpload)
        {
            // Set up DataTable place holder
            DataTable dt = new DataTable();
@@ -63,7 +63,7 @@ namespace Project4thYear.Controllers
            //Tidy up
            dt.Dispose();
 
-           return View("Data", ViewData["Feedback"]);
+           return View("Data1", ViewData["Feedback"]);
        }
 
        
