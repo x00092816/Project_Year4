@@ -41,8 +41,12 @@ namespace Project4thYear.Controllers
                         select e;
 
             int size = total.Count();
+            object[] oa1Temp = new object[size];
+            object[] oa2Temp = new object[size];
             object[] oa1 = new object[size];
             object[] oa2 = new object[size];
+            double val1a = 0;
+            double val2a = 0;
 
             string[] names = new string[size];
             int i = 0;
@@ -50,17 +54,42 @@ namespace Project4thYear.Controllers
             foreach (var item in total)
             {
                 //oa[i] = item.Points;
-                oa1[i] = item.GoalsFor;
-                oa2[i] = item.GoalsAgainst;
+                oa1Temp[i] = item.GoalsFor;
+                oa2Temp[i] = item.GoalsAgainst;
                 names[i] = item.Club;
-                i++;
+                var val1 = item.GoalsFor;
+                var val2 = item.GoalsAgainst;
+
+                //Check which value is larger (if statement)
+
+                double DoubleVal1 = Convert.ToDouble(val1);
+                double DoubleVal2 = Convert.ToDouble(val2);
+                //var hundredPercent = (val1 + val2) / 2;
+                //var getPercent = (val2 / val1) * 100;
+                //var getLargerNumberPercent = (getPercent / hundredPercent) * 100;
+                //var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
+                double tempVal1 = DoubleVal1 + DoubleVal2;
+                //double tempVal2 = DoubleVal2 + DoubleVal1;
+                //double tempVal3 = tempVal2 / 2;
+                //double tempVal4 = tempVal1 / tempVal2;
+                //double tempVal5 = tempVal4 * 100;
+                //var getLargerNumberPercent = (val1 - val2) / ((val2 + val1) / 2) * 100;
+                var getLargerNumberPercent = (DoubleVal1 / tempVal1) * 100;
+                //var getLargerNumberPercent = tempVal5;
+                var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
+                val1a = getLargerNumberPercent;
+                val2a = getSmallerNumberPrecent;
+                //oa1[i] = getLargerNumberPercent;
+                //oa2[i] = getSmallerNumberPrecent;
+
+                //i++;
 
             }
         
             //string name = l.Team;
              Highcharts chart = new Highcharts("chart")
                 .InitChart(new Chart { PlotShadow = false })
-                .SetTitle(new Title { Text = "Home and Away Goals Comparision" })
+                .SetTitle(new Title { Text = "Home and Away Goals Comparision for: " + names })
                 .SetTooltip(new Tooltip { Formatter = "function() { return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %'; }" })
                 .SetPlotOptions(new PlotOptions
                 {
@@ -82,8 +111,8 @@ namespace Project4thYear.Controllers
                     Name = "",
                     Data = new Data(new object[]
                     {
-                        new object[] { oa1 },
-                        new object[] { oa2 }
+                        new object[] { val1a },
+                        new object[] { val2a }
                         //new DotNet.Highcharts.Options.Point
                         //{
                         //    Name = "Chrome",
