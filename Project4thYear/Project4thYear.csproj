@@ -254,6 +254,8 @@
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Home\Data1.cshtml" />
     <Content Include="Views\League\Chart.cshtml" />
+    <Content Include="Views\League\ChartPie.cshtml" />
+    <Content Include="Views\League\ChartBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

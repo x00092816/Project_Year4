@@ -32,6 +32,8 @@ namespace Project4thYear.Controllers
             //return View(db.Leagues.ToList());
         }
 
+
+        //Pie Chart for GoalFor and GoalsAgainst
         public ActionResult Chart(int? id)
         {
             League l = new League();
@@ -47,6 +49,13 @@ namespace Project4thYear.Controllers
             object[] oa2 = new object[size];
             double val1a = 0;
             double val2a = 0;
+            var name1 = "";
+            string name2 = "";
+            string goalsForString = "Goals For";
+            string goalsAgainstString = "Goals Against";
+            double totalValue = 0.0;
+            double goalsForValue = 0.0;
+            double goalsAgainstValue = 0.0;
 
             string[] names = new string[size];
             int i = 0;
@@ -59,16 +68,22 @@ namespace Project4thYear.Controllers
                 names[i] = item.Club;
                 var val1 = item.GoalsFor;
                 var val2 = item.GoalsAgainst;
+                name1 = item.Club;
+
 
                 //Check which value is larger (if statement)
 
                 double DoubleVal1 = Convert.ToDouble(val1);
                 double DoubleVal2 = Convert.ToDouble(val2);
+                name2 = Convert.ToString(name1);
+                goalsForValue = DoubleVal1;
+                goalsAgainstValue = DoubleVal2;
                 //var hundredPercent = (val1 + val2) / 2;
                 //var getPercent = (val2 / val1) * 100;
                 //var getLargerNumberPercent = (getPercent / hundredPercent) * 100;
                 //var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
                 double tempVal1 = DoubleVal1 + DoubleVal2;
+                totalValue = tempVal1;
                 //double tempVal2 = DoubleVal2 + DoubleVal1;
                 //double tempVal3 = tempVal2 / 2;
                 //double tempVal4 = tempVal1 / tempVal2;
@@ -85,34 +100,35 @@ namespace Project4thYear.Controllers
                 //i++;
 
             }
-        
+
             //string name = l.Team;
-             Highcharts chart = new Highcharts("chart")
-                .InitChart(new Chart { PlotShadow = false })
-                .SetTitle(new Title { Text = "Home and Away Goals Comparision for: " + names })
-                .SetTooltip(new Tooltip { Formatter = "function() { return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %'; }" })
-                .SetPlotOptions(new PlotOptions
-                {
-                    Pie = new PlotOptionsPie
+            Highcharts chart = new Highcharts("chart")
+               .InitChart(new Chart { PlotShadow = false })
+               .SetTitle(new Title { Text = "Home and Away Goals Comparision for: " + name2 })
+               .SetSubtitle(new Subtitle { Text = "Total Goals: " + totalValue })
+               .SetTooltip(new Tooltip { Formatter = "function() { return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %'; }" })
+               .SetPlotOptions(new PlotOptions
+               {
+                   Pie = new PlotOptionsPie
+                   {
+                       AllowPointSelect = true,
+                       Cursor = Cursors.Pointer,
+                       DataLabels = new PlotOptionsPieDataLabels
+                       {
+                           Color = ColorTranslator.FromHtml("#000000"),
+                           ConnectorColor = ColorTranslator.FromHtml("#000000"),
+                           Formatter = "function() { return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %'; }"
+                       }
+                   }
+               })
+               .SetSeries(new Series
+               {
+                   Type = ChartTypes.Pie,
+                   Name = "",
+                   Data = new Data(new object[]
                     {
-                        AllowPointSelect = true,
-                        Cursor = Cursors.Pointer,
-                        DataLabels = new PlotOptionsPieDataLabels
-                        {
-                            Color = ColorTranslator.FromHtml("#000000"),
-                            ConnectorColor = ColorTranslator.FromHtml("#000000"),
-                            Formatter = "function() { }"
-                        }
-                    }
-                })
-                .SetSeries(new Series
-                {
-                    Type = ChartTypes.Pie,
-                    Name = "",
-                    Data = new Data(new object[]
-                    {
-                        new object[] { val1a },
-                        new object[] { val2a }
+                        new object[] { goalsForString, val1a },
+                        new object[] { goalsAgainstString, val2a }
                         //new DotNet.Highcharts.Options.Point
                         //{
                         //    Name = "Chrome",
@@ -124,21 +140,241 @@ namespace Project4thYear.Controllers
                         //new object[] { "Opera", 6.2 },
                         //new object[] { "Others", 0.7 }
                     })
-                });
+               });
 
             return View(chart);
+        }
+
+      
+
+
+
+
+        //Pie Chart for Win, Draws and Losses
+
+        public ActionResult ChartPie(int? id)
+        {
+            League l = new League();
+            l = db.Leagues.Where(p => p.LeagueID == id).SingleOrDefault();
+            var total = from e in db.Leagues
+                        where e.LeagueID == id
+                        select e;
+
+            int size = total.Count();
+            object[] oa1Temp = new object[size];
+            object[] oa2Temp = new object[size];
+            object[] oa1 = new object[size];
+            object[] oa2 = new object[size];
+            double val1a = 0;
+            double val2a = 0;
+            double val3a = 0;
+            var name1 = "";
+            string name2 = "";
+            string winsString = "Wins";
+            string drawsString = "Draws";
+            string lossesString = "Losses";
+            double totalValue = 0.0;
+            double winsValue = 0.0;
+            double drawsValue = 0.0;
+            double lossesValue = 0.0;
+
+            string[] names = new string[size];
+            int i = 0;
+
+            foreach (var item in total)
+            {
+                //oa[i] = item.Points;
+                //oa1Temp[i] = item.GoalsFor;
+                //oa2Temp[i] = item.GoalsAgainst;
+                names[i] = item.Club;
+                var val1 = item.Wins;
+                var val2 = item.Draws;
+                var val3 = item.Losses;
+                name1 = item.Club;
+
+
+                //Check which value is larger (if statement)
+
+                double DoubleVal1 = Convert.ToDouble(val1);
+                double DoubleVal2 = Convert.ToDouble(val2);
+                double DoubleVal3 = Convert.ToDouble(val3);
+                name2 = Convert.ToString(name1);
+                winsValue = DoubleVal1;
+                drawsValue = DoubleVal2;
+                lossesValue = DoubleVal3;
+                //var hundredPercent = (val1 + val2) / 2;
+                //var getPercent = (val2 / val1) * 100;
+                //var getLargerNumberPercent = (getPercent / hundredPercent) * 100;
+                //var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
+                double tempVal1 = DoubleVal1 + DoubleVal2 + DoubleVal3;
+                totalValue = tempVal1;
+                //double tempVal2 = DoubleVal2 + DoubleVal1;
+                //double tempVal3 = tempVal2 / 2;
+                //double tempVal4 = tempVal1 / tempVal2;
+                //double tempVal5 = tempVal4 * 100;
+                //var getLargerNumberPercent = (val1 - val2) / ((val2 + val1) / 2) * 100;
+                var getPercent1 = (DoubleVal1 / tempVal1) * 100;
+                var getPercent2 = (DoubleVal2 / tempVal1) * 100;
+                var getPercent3 = (DoubleVal3 / tempVal1) * 100;
+                //var getLargerNumberPercent = tempVal5;
+                //var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
+                val1a = getPercent1;
+                val2a = getPercent2;
+                val3a = getPercent3;
+                //oa1[i] = getLargerNumberPercent;
+                //oa2[i] = getSmallerNumberPrecent;
+
+                //i++;
+
+            }
+
+            //string name = l.Team;
+            Highcharts chart = new Highcharts("chart")
+               .InitChart(new Chart { PlotShadow = false })
+               .SetTitle(new Title { Text = "Wins, Draws ans Losses Comparision for: " + name2 })
+               .SetSubtitle(new Subtitle { Text = "Total Matches Played: " + totalValue })
+               .SetTooltip(new Tooltip { Formatter = "function() { return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %'; }" })
+
+               .SetOptions(new GlobalOptions
+               {
+                   Colors = new[]
+		    {
+                         ColorTranslator.FromHtml("#FFA500"),
+			 ColorTranslator.FromHtml("#7798BF"),
+			 ColorTranslator.FromHtml("#55BF3B"),
+			 ColorTranslator.FromHtml("#DF5353"),
+			 ColorTranslator.FromHtml("#DDDF0D"),
+			 ColorTranslator.FromHtml("#aaeeee"),
+			 ColorTranslator.FromHtml("#ff0066"),
+			 ColorTranslator.FromHtml("#eeaaee")
+		    }
+               })
+               .SetPlotOptions(new PlotOptions
+               {
+                   Pie = new PlotOptionsPie
+                   {
+                       AllowPointSelect = true,
+                       Cursor = Cursors.Pointer,
+                       DataLabels = new PlotOptionsPieDataLabels
+                       {
+                           Color = ColorTranslator.FromHtml("#000000"),
+                           ConnectorColor = ColorTranslator.FromHtml("#000000"),
+                           Formatter = "function() { return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %'; }"
+                       }
+                   }
+               })
+               .SetSeries(new Series
+               {
+                   Type = ChartTypes.Pie,
+                   Name = "",
+                   Data = new Data(new object[]
+                    {
+                        new object[] { winsString, val1a },
+                        new object[] { drawsString, val2a },
+                        new object[] { lossesString, val3a }
+                        //new DotNet.Highcharts.Options.Point
+                        //{
+                        //    Name = "Chrome",
+                        //    Y = 12.8,
+                        //    Sliced = true,
+                        //    Selected = true
+                        //},
+                        //new object[] { "Safari", 8.5 },
+                        //new object[] { "Opera", 6.2 },
+                        //new object[] { "Others", 0.7 }
+                    })
+               });
+
+            return View(chart);
+        }
+
+
+
+
+
+           public ActionResult ChartBar(int? id)
+        {
+            //League l = new League();
+            //l = db.Leagues.Where(p => p.LeagueID == id).SingleOrDefault();
+            //var total = from e in db.Leagues
+            //            where e.LeagueID == id
+            //            select e;
+
+            //int size = total.Count();
+            //object[] oa1Temp = new object[size];
+            //object[] oa2Temp = new object[size];
+            //object[] oa1 = new object[size];
+            //object[] oa2 = new object[size];
+            //double val1a = 0;
+            //double val2a = 0;
+            //double val3a = 0;
+            //var name1 = "";
+            //string name2 = "";
+            //string winsString = "Wins";
+            //string drawsString = "Draws";
+            //string lossesString = "Losses";
+            //double totalValue = 0.0;
+            //double winsValue = 0.0;
+            //double drawsValue = 0.0;
+            //double lossesValue = 0.0;
+
+            //string[] names = new string[size];
+            //int i = 0;
+
+            //foreach (var item in total)
+            //{
+            //    //oa[i] = item.Points;
+            //    //oa1Temp[i] = item.GoalsFor;
+            //    //oa2Temp[i] = item.GoalsAgainst;
+            //    names[i] = item.Club;
+            //    var val1 = item.Wins;
+            //    var val2 = item.Draws;
+            //    var val3 = item.Losses;
+            //    name1 = item.Club;
+                
+
+            //    //Check which value is larger (if statement)
+
+            //    double DoubleVal1 = Convert.ToDouble(val1);
+            //    double DoubleVal2 = Convert.ToDouble(val2);
+            //    double DoubleVal3 = Convert.ToDouble(val3);
+            //    name2 = Convert.ToString(name1);
+            //    winsValue = DoubleVal1;
+            //    drawsValue = DoubleVal2;
+            //    lossesValue = DoubleVal3;
+            //    //var hundredPercent = (val1 + val2) / 2;
+            //    //var getPercent = (val2 / val1) * 100;
+            //    //var getLargerNumberPercent = (getPercent / hundredPercent) * 100;
+            //    //var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
+            //    double tempVal1 = DoubleVal1 + DoubleVal2 + DoubleVal3;
+            //    totalValue = tempVal1;
+            //    //double tempVal2 = DoubleVal2 + DoubleVal1;
+            //    //double tempVal3 = tempVal2 / 2;
+            //    //double tempVal4 = tempVal1 / tempVal2;
+            //    //double tempVal5 = tempVal4 * 100;
+            //    //var getLargerNumberPercent = (val1 - val2) / ((val2 + val1) / 2) * 100;
+            //    var getPercent1 = (DoubleVal1 / tempVal1) * 100;
+            //    var getPercent2 = (DoubleVal2 / tempVal1) * 100;
+            //    var getPercent3 = (DoubleVal3 / tempVal1) * 100;
+            //    //var getLargerNumberPercent = tempVal5;
+            //    //var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
+            //    val1a = getPercent1;
+            //    val2a = getPercent2;
+            //    val3a = getPercent3;
+            //    //oa1[i] = getLargerNumberPercent;
+            //    //oa2[i] = getSmallerNumberPrecent;
+
+            //    //i++;
+
+            //}
             
-        
-
-
-
-            //Highcharts chart = new Highcharts("chart")
+            //Highcharts chartBar = new Highcharts("chart")
             //    .InitChart(new Chart { Type = ChartTypes.Bar })
             //    .SetTitle(new Title { Text = "" })
             //    .SetSubtitle(new Subtitle { Text = "" })
             //    .SetXAxis(new XAxis
             //    {
-            //           //do for loop here - string[] Categories = new string[names.size]
+            //        //do for loop here - string[] Categories = new string[names.size]
             //        Categories = new[] { names[0] },
             //        Title = new XAxisTitle { Text = string.Empty }
             //    })
@@ -161,7 +397,7 @@ namespace Project4thYear.Controllers
             //    })
             //    .SetLegend(new Legend
             //    {
-            //        Enabled = false
+            //        Enabled = false,
             //        //Layout = Layouts.Vertical,
             //        //Align = HorizontalAligns.Right,
             //        //VerticalAlign = VerticalAligns.Top,
@@ -175,13 +411,13 @@ namespace Project4thYear.Controllers
             //    .SetCredits(new Credits { Enabled = false })
             //    .SetSeries(new[]
             //    {
-            //        new Series {Data = new Data(new object[] {oa}) }
+            //        new Series {Data = new Data(new object[] {}) }
             //        //new Series { Name = "Year 1800", Data = new Data(new object[] { 107, 31, 635, 203, 2 }) },
             //        //new Series { Name = "Year 1900", Data = new Data(new object[] { 133, 156, 947, 408, 6 }) },
             //        //new Series { Name = "Year 2008", Data = new Data(new object[] { 973, 914, 4054, 732, 34 }) }
             //    });
 
-            //return View(chart);
+            return View();
 
 
             //return View(db.Leagues.ToList());

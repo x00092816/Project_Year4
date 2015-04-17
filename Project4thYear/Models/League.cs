@@ -7,6 +7,8 @@ using System.Web;
 
 namespace Project4thYear.Models
 {
+
+    enum Years {};
     public class League
     {
         //[Key]
