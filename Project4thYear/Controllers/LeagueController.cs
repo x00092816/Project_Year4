@@ -289,133 +289,85 @@ namespace Project4thYear.Controllers
         }
 
 
-
-
-
-           public ActionResult ChartBar(int? id)
+        string yearToCheck = "";
+          
+        public ActionResult ChartBar(string searchString)
         {
             //League l = new League();
-            //l = db.Leagues.Where(p => p.LeagueID == id).SingleOrDefault();
+            //l = db.Leagues.Where(p => p.Year == searchString).SingleOrDefault();
             //var total = from e in db.Leagues
-            //            where e.LeagueID == id
+            //            where e.Year == searchString
             //            select e;
 
-            //int size = total.Count();
-            //object[] oa1Temp = new object[size];
-            //object[] oa2Temp = new object[size];
-            //object[] oa1 = new object[size];
-            //object[] oa2 = new object[size];
-            //double val1a = 0;
-            //double val2a = 0;
-            //double val3a = 0;
-            //var name1 = "";
-            //string name2 = "";
-            //string winsString = "Wins";
-            //string drawsString = "Draws";
-            //string lossesString = "Losses";
-            //double totalValue = 0.0;
-            //double winsValue = 0.0;
-            //double drawsValue = 0.0;
-            //double lossesValue = 0.0;
+            var total = from r in db.Leagues select r;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                total = total.Where(s => s.Year.Contains(searchString));
+            }
 
-            //string[] names = new string[size];
-            //int i = 0;
+            int size = total.Count();
+            object[] oa = new object[size];
+            object[] oa2 = new object[size];
 
-            //foreach (var item in total)
-            //{
-            //    //oa[i] = item.Points;
-            //    //oa1Temp[i] = item.GoalsFor;
-            //    //oa2Temp[i] = item.GoalsAgainst;
-            //    names[i] = item.Club;
-            //    var val1 = item.Wins;
-            //    var val2 = item.Draws;
-            //    var val3 = item.Losses;
-            //    name1 = item.Club;
-                
+            string[] names = new string[size];
+            int i = 0;
 
-            //    //Check which value is larger (if statement)
+            foreach (var item in total)
+            {
+                oa[i] = item.Points;
+                names[i] = item.Club;
+                i++;
 
-            //    double DoubleVal1 = Convert.ToDouble(val1);
-            //    double DoubleVal2 = Convert.ToDouble(val2);
-            //    double DoubleVal3 = Convert.ToDouble(val3);
-            //    name2 = Convert.ToString(name1);
-            //    winsValue = DoubleVal1;
-            //    drawsValue = DoubleVal2;
-            //    lossesValue = DoubleVal3;
-            //    //var hundredPercent = (val1 + val2) / 2;
-            //    //var getPercent = (val2 / val1) * 100;
-            //    //var getLargerNumberPercent = (getPercent / hundredPercent) * 100;
-            //    //var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
-            //    double tempVal1 = DoubleVal1 + DoubleVal2 + DoubleVal3;
-            //    totalValue = tempVal1;
-            //    //double tempVal2 = DoubleVal2 + DoubleVal1;
-            //    //double tempVal3 = tempVal2 / 2;
-            //    //double tempVal4 = tempVal1 / tempVal2;
-            //    //double tempVal5 = tempVal4 * 100;
-            //    //var getLargerNumberPercent = (val1 - val2) / ((val2 + val1) / 2) * 100;
-            //    var getPercent1 = (DoubleVal1 / tempVal1) * 100;
-            //    var getPercent2 = (DoubleVal2 / tempVal1) * 100;
-            //    var getPercent3 = (DoubleVal3 / tempVal1) * 100;
-            //    //var getLargerNumberPercent = tempVal5;
-            //    //var getSmallerNumberPrecent = 100 - getLargerNumberPercent;
-            //    val1a = getPercent1;
-            //    val2a = getPercent2;
-            //    val3a = getPercent3;
-            //    //oa1[i] = getLargerNumberPercent;
-            //    //oa2[i] = getSmallerNumberPrecent;
+            }
 
-            //    //i++;
-
-            //}
-            
-            //Highcharts chartBar = new Highcharts("chart")
-            //    .InitChart(new Chart { Type = ChartTypes.Bar })
-            //    .SetTitle(new Title { Text = "" })
-            //    .SetSubtitle(new Subtitle { Text = "" })
-            //    .SetXAxis(new XAxis
-            //    {
-            //        //do for loop here - string[] Categories = new string[names.size]
-            //        Categories = new[] { names[0] },
-            //        Title = new XAxisTitle { Text = string.Empty }
-            //    })
-            //    .SetYAxis(new YAxis
-            //    {
-            //        Min = 0,
-            //        Title = new YAxisTitle
-            //        {
-            //            Text = "Points",
-            //            Align = AxisTitleAligns.High
-            //        }
-            //    })
-            //    .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +' points'; }" })
-            //    .SetPlotOptions(new PlotOptions
-            //    {
-            //        Bar = new PlotOptionsBar
-            //        {
-            //            DataLabels = new PlotOptionsBarDataLabels { Enabled = true }
-            //        }
-            //    })
-            //    .SetLegend(new Legend
-            //    {
-            //        Enabled = false,
-            //        //Layout = Layouts.Vertical,
-            //        //Align = HorizontalAligns.Right,
-            //        //VerticalAlign = VerticalAligns.Top,
-            //        //X = -100,
-            //        //Y = 100,
-            //        //Floating = true,
-            //        //BorderWidth = 1,
-            //        //BackgroundColor = new BackColorOrGradient(ColorTranslator.FromHtml("#FFFFFF")),
-            //        //Shadow = true
-            //    })
-            //    .SetCredits(new Credits { Enabled = false })
-            //    .SetSeries(new[]
-            //    {
-            //        new Series {Data = new Data(new object[] {}) }
-            //        //new Series { Name = "Year 1800", Data = new Data(new object[] { 107, 31, 635, 203, 2 }) },
-            //        //new Series { Name = "Year 1900", Data = new Data(new object[] { 133, 156, 947, 408, 6 }) },
-            //        //new Series { Name = "Year 2008", Data = new Data(new object[] { 973, 914, 4054, 732, 34 }) }
-            //    });
+            Highcharts chartBar = new Highcharts("chart")
+                .InitChart(new Chart { Type = ChartTypes.Bar })
+                .SetTitle(new Title { Text = "" })
+                .SetSubtitle(new Subtitle { Text = "" })
+                .SetXAxis(new XAxis
+                {
+                    //do for loop here - string[] Categories = new string[names.size]
+                    Categories = new[] { names[0] },
+                    Title = new XAxisTitle { Text = string.Empty }
+                })
+                .SetYAxis(new YAxis
+                {
+                    Min = 0,
+                    Title = new YAxisTitle
+                    {
+                        Text = "Points",
+                        Align = AxisTitleAligns.High
+                    }
+                })
+                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +' points'; }" })
+                .SetPlotOptions(new PlotOptions
+                {
+                    Bar = new PlotOptionsBar
+                    {
+                        DataLabels = new PlotOptionsBarDataLabels { Enabled = true }
+                    }
+                })
+                .SetLegend(new Legend
+                {
+                    Enabled = false,
+                    //Layout = Layouts.Vertical,
+                    //Align = HorizontalAligns.Right,
+                    //VerticalAlign = VerticalAligns.Top,
+                    //X = -100,
+                    //Y = 100,
+                    //Floating = true,
+                    //BorderWidth = 1,
+                    //BackgroundColor = new BackColorOrGradient(ColorTranslator.FromHtml("#FFFFFF")),
+                    //Shadow = true
+                })
+                .SetCredits(new Credits { Enabled = false })
+                .SetSeries(new[]
+                {
+                    new Series {Data = new Data(new object[] {oa}) }
+                    //new Series { Name = "Year 1800", Data = new Data(new object[] { 107, 31, 635, 203, 2 }) },
+                    //new Series { Name = "Year 1900", Data = new Data(new object[] { 133, 156, 947, 408, 6 }) },
+                    //new Series { Name = "Year 2008", Data = new Data(new object[] { 973, 914, 4054, 732, 34 }) }
+                });
 
             return View();
 
