@@ -26,11 +26,18 @@
     </select>
 
     <input type="button" id="buttonBarChart" value="League Points Chart" class="btn btn-primary btn-m" />
+    <input type="button" id="buttonNegChart" value="Goal Difference Chart" class="btn btn-primary btn-m" />
 </div>
 
 <script>
     $('#buttonBarChart').click(function () {
-        document.location = '@Url.Action("ChartBar", "League", new { searchString = "2013/2014" })';
+        document.location = '@Url.Action("ChartBar", "League", new { searchString = "" })';
+    });
+</script>
+
+<script>
+    $('#buttonNegChart').click(function () {
+        document.location = '@Url.Action("ColumnWithNegativeValues", "League", new { searchString = "2013/2014" })';
     });
 </script>
 
@@ -130,7 +137,6 @@
                 @Html.DisplayFor(modelItem => item.Points)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.LeagueID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.LeagueID }) |
                 @Html.ActionLink("Goals", "Chart", new { id = item.LeagueID }) |
                 @Html.ActionLink("Matches", "ChartPie", new { id = item.LeagueID })

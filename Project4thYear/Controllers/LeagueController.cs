@@ -377,6 +377,49 @@ namespace Project4thYear.Controllers
             //return View(db.Leagues.ToList());
         }
 
+
+        //Chart With Negative Values
+        public ActionResult ColumnWithNegativeValues(string searchString)
+        {
+            var total = from r in db.Leagues select r;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                total = total.Where(s => s.Year.Contains(searchString));
+            }
+
+            int size = total.Count();
+            object[] oa = new object[size];
+            object[] oa2 = new object[size];
+
+            string[] names = new string[size];
+            int i = 0;
+
+            foreach (var item in total)
+            {
+                oa[i] = item.GoalDifference;
+                names[i] = item.Club;
+                i++;
+
+            }
+
+            Highcharts chart = new Highcharts("chart")
+                .InitChart(new Chart { DefaultSeriesType = ChartTypes.Column })
+                .SetTitle(new Title { Text = "Column chart with negative values" })
+                .SetXAxis(new XAxis { Categories = new[] { names[0], names[1], names[2], names[3], names[4], names[5], names[6], names[7], names[8], names[9], names[10], names[11], names[12], names[13], names[14], names[15], names[16], names[17], names[18], names[19] } })
+                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +''; }" })
+                .SetCredits(new Credits { Enabled = false })
+                .SetSeries(new[]
+                {
+                    new Series { Data = new Data(new object[] { oa[0], oa[1], oa[2], oa[3], oa[4], oa[5], oa[6], oa[7], oa[8], oa[9], oa[10], oa[11], oa[12], oa[13], oa[14], oa[15], oa[16], oa[17], oa[18], oa[19]}) }
+                    //new Series { Name = "Jane", Data = new Data(new object[] { 2, -2, -3, 2, 1 }) },
+                    //new Series { Name = "Joe", Data = new Data(new object[] { 3, 4, 4, -2, 5 }) }
+                });
+
+            return View(chart);
+        }
+
+
+
         //public ActionResult Chart(int? id)
         //{
         //    Team t = new Team();
