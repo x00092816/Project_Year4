@@ -289,7 +289,7 @@ namespace Project4thYear.Controllers
         }
 
 
-        string yearToCheck = "";
+        //string yearToCheck = "";
           
         public ActionResult ChartBar(string searchString)
         {
@@ -363,13 +363,13 @@ namespace Project4thYear.Controllers
                 .SetCredits(new Credits { Enabled = false })
                 .SetSeries(new[]
                 {
-                    new Series {Data = new Data(new object[] {oa}) }
+                    new Series {Data = new Data(new object[] {oa[0], oa[1], oa[2]}) }
                     //new Series { Name = "Year 1800", Data = new Data(new object[] { 107, 31, 635, 203, 2 }) },
                     //new Series { Name = "Year 1900", Data = new Data(new object[] { 133, 156, 947, 408, 6 }) },
                     //new Series { Name = "Year 2008", Data = new Data(new object[] { 973, 914, 4054, 732, 34 }) }
                 });
 
-            return View();
+            return View(chartBar);
 
 
             //return View(db.Leagues.ToList());
