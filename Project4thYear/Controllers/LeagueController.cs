@@ -322,13 +322,14 @@ namespace Project4thYear.Controllers
 
             Highcharts chartBar = new Highcharts("chart")
                 .InitChart(new Chart { Type = ChartTypes.Bar })
-                .SetTitle(new Title { Text = "" })
-                .SetSubtitle(new Subtitle { Text = "" })
+                .SetTitle(new Title { Text = "League Points Tally" })
+                .SetSubtitle(new Subtitle { Text = "Highest Points: " + names[0] })
                 .SetXAxis(new XAxis
                 {
                     //do for loop here - string[] Categories = new string[names.size]
-                    Categories = new[] { names[0] },
-                    Title = new XAxisTitle { Text = string.Empty }
+                    Categories = new[] { names[0], names[1], names[2], names[3], names[4], names[5], names[6], names[7], names[8], names[9], names[10], names[11], names[12], names[13], names[14], names[15], names[16], names[17], names[18], names[19] },
+                    
+                    Title = new XAxisTitle { Text = "Teams" }
                 })
                 .SetYAxis(new YAxis
                 {
@@ -339,7 +340,8 @@ namespace Project4thYear.Controllers
                         Align = AxisTitleAligns.High
                     }
                 })
-                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +' points'; }" })
+                
+                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.name +': '+ this.y +' points'; }" })
                 .SetPlotOptions(new PlotOptions
                 {
                     Bar = new PlotOptionsBar
@@ -363,7 +365,7 @@ namespace Project4thYear.Controllers
                 .SetCredits(new Credits { Enabled = false })
                 .SetSeries(new[]
                 {
-                    new Series {Data = new Data(new object[] {oa[0], oa[1], oa[2]}) }
+                    new Series {Data = new Data(new object[] {oa[0], oa[1], oa[2], oa[3], oa[4], oa[5], oa[6], oa[7], oa[8], oa[9], oa[10], oa[11], oa[12], oa[13], oa[14], oa[15], oa[16], oa[17], oa[18], oa[19]}) }
                     //new Series { Name = "Year 1800", Data = new Data(new object[] { 107, 31, 635, 203, 2 }) },
                     //new Series { Name = "Year 1900", Data = new Data(new object[] { 133, 156, 947, 408, 6 }) },
                     //new Series { Name = "Year 2008", Data = new Data(new object[] { 973, 914, 4054, 732, 34 }) }
