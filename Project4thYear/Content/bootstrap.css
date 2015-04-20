@@ -315,6 +315,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
+  /*color: #ffffff;*/
   /*background-color: #ffffff;*/
   background-color: #F5FCDC;
   
@@ -4030,6 +4031,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
+  text-decoration-color: #ffffff;
 }
 
 .navbar:before,
@@ -4198,6 +4200,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+  color: white !important;
 }
 
 .navbar-brand:hover,
@@ -4242,6 +4245,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-nav {
   margin: 7.5px -15px;
+  color: white !important;
 }
 
 .navbar-nav > li > a {
