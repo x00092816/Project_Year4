@@ -123,9 +123,9 @@ namespace Project4thYear.Controllers
                    ///Set target table and tell the number of rows
                    //copy.DestinationTableName = "BulkImportDetails";
 
-                   //copy.DestinationTableName = "League";
+                   copy.DestinationTableName = "League";
                    //copy.DestinationTableName = "Team";
-                   copy.DestinationTableName = "Player";
+                   //copy.DestinationTableName = "Player";
 
                    copy.BatchSize = dt.Rows.Count;
                    try
@@ -143,6 +143,8 @@ namespace Project4thYear.Controllers
 
            return Feedback;
        }
+
+
     
     }
 }

@@ -326,7 +326,8 @@ namespace Project4thYear.Controllers
                 .SetSubtitle(new Subtitle { Text = "Highest Points: " + names[0] })
                 .SetXAxis(new XAxis
                 {
-                    //do for loop here - string[] Categories = new string[names.size]
+                    
+                    Min=0,
                     Categories = new[] { names[0], names[1], names[2], names[3], names[4], names[5], names[6], names[7], names[8], names[9], names[10], names[11], names[12], names[13], names[14], names[15], names[16], names[17], names[18], names[19] },
                     
                     Title = new XAxisTitle { Text = "Teams" }
@@ -341,7 +342,7 @@ namespace Project4thYear.Controllers
                     }
                 })
                 
-                .SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.name +': '+ this.y +' points'; }" })
+                .SetTooltip(new Tooltip { Formatter = "function() { return '' +': '+ this.y +' points'; }" })
                 .SetPlotOptions(new PlotOptions
                 {
                     Bar = new PlotOptionsBar
@@ -404,7 +405,7 @@ namespace Project4thYear.Controllers
 
             Highcharts chart = new Highcharts("chart")
                 .InitChart(new Chart { DefaultSeriesType = ChartTypes.Column })
-                .SetTitle(new Title { Text = "Column chart with negative values" })
+                .SetTitle(new Title { Text = "Goal Difference Comparision" })
                 .SetXAxis(new XAxis { Categories = new[] { names[0], names[1], names[2], names[3], names[4], names[5], names[6], names[7], names[8], names[9], names[10], names[11], names[12], names[13], names[14], names[15], names[16], names[17], names[18], names[19] } })
                 //.SetTooltip(new Tooltip { Formatter = "function() { return ''+ this.series.name +': '+ this.y +''; }" })
                 .SetCredits(new Credits { Enabled = false })

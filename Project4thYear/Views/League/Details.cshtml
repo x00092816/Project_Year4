@@ -1,6 +1,6 @@
 ﻿@model Project4thYear.Models.League
 
-{
+@{
     ViewBag.Title = "Details";
 }
 
@@ -104,12 +104,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LeagueID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-var name = model.Club;
-var location = name + "football stadium";
 
 
 <!doctype html>
@@ -167,7 +163,7 @@ var location = name + "football stadium";
 </head>
 <body>
 
-    <h2>Google Map Address</h2>
+    <h2>Stadium Location</h2>
 
     <div id="map_canvas" style="width:710px; height:300px"></div>
 
