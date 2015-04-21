@@ -4,13 +4,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Player</h2>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        <div class="form-group">
+            Enter Player Name: @Html.TextBox("searchString")
+            <input type="submit" value=" Search" class="btn btn-primary btn-sm" />
+        </div>
+    </p>
+}
 
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TeamID)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Year)
         </th>
@@ -19,6 +30,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Club)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Starts)
@@ -49,9 +63,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TeamID)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Year)
         </td>
@@ -60,6 +74,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Club)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Starts)
@@ -87,8 +104,8 @@
         </td>
         <td>
             @Html.ActionLink("Details", "Details", new { id = item.PlayerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.PlayerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.PlayerID })
+            @Html.ActionLink("Goals Chart", "SemiCircleDonutPlayer", new { id = item.PlayerID })
+            @Html.ActionLink("Cards Chart", "ChartPiePlayer", new { id = item.PlayerID })
         </td>
           
     </tr>

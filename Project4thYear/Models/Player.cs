@@ -24,10 +24,11 @@ namespace Project4thYear.Models
         public int YellowCard { get; set; }
         [DisplayName("Double Yellow Cards")]
         public int YellowCardRedCard { get; set; }
-        [DisplayName("Your Phone")]
+        [DisplayName("Red Card")]
         public int RedCard { get; set; }
         public int Goals { get; set; }
         public int Assists { get; set; }
+        [DisplayName("Own Goals")]
         public int OwnGoals { get; set; }
 
         //[ForeignKey("TeamID")]
