@@ -26,9 +26,6 @@
     </p>
 }*@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         @*<th>
@@ -98,9 +95,17 @@
         </td>
         <td>
            
-            @Html.ActionLink("Details", "Details", new { id=item.TeamID }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.TeamID }) |
             @Html.ActionLink("Home Vs. Away Goals Chart", "SemiCircleDonut", new { id=item.TeamID }) |
-            @Html.ActionLink("1st Half Vs. 2nd Half Goals Chart", "SemiCircleDonut2", new { id = item.TeamID })
+            @Html.ActionLink("1st Half Vs. 2nd Half Goals Chart", "SemiCircleDonut2", new { id = item.TeamID })*@
+            <div class="btn-group">
+                <a href="#" class="dropdown-toggle, btn btn-info btn-large" data-toggle="dropdown" role="button" aria-expanded="false">Options <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Details", "Details", new { id = item.TeamID }, null)</li>
+                    <li>@Html.ActionLink("Home Vs. Away Chart", "SemiCircleDonut", new { id = item.TeamID }, null)</li>
+                    <li>@Html.ActionLink("1st Half Vs. 2nd Half Chart", "SemiCircleDonut2", new { id = item.TeamID })</li>
+                </ul>
+            </div>
         </td>
     </tr>
 }

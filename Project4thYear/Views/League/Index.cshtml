@@ -150,9 +150,17 @@
                 @Html.DisplayFor(modelItem => item.Points)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.LeagueID }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.LeagueID }) |
                 @Html.ActionLink("Goals", "Chart", new { id = item.LeagueID }) |
-                @Html.ActionLink("Matches", "ChartPie", new { id = item.LeagueID })
+                @Html.ActionLink("Matches", "ChartPie", new { id = item.LeagueID })*@
+                <div class="btn-group">
+                    <a href="#" class="dropdown-toggle, btn btn-info btn-large" data-toggle="dropdown" role="button" aria-expanded="false">Options <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Details", "Details", new { id = item.LeagueID }, null)</li>
+                        <li>@Html.ActionLink("Goals", "Chart", new { id = item.LeagueID }, null)</li>
+                        <li>@Html.ActionLink("Matches", "ChartPie", new { id = item.LeagueID })</li>
+                    </ul>
+                </div>
             </td>
         </tr>
     }
