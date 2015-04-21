@@ -19,7 +19,7 @@ namespace Project4thYear.Controllers
     public class LeagueController : Controller //: IEnumerable()
     {
         private FootballContext db = new FootballContext();
-
+        
         //GET: League
         public ActionResult Index(string searchString)
         {

@@ -26,6 +26,7 @@
         <option selected="">Select a year</option>
         <option value="2013/2014">2013/2014</option>
         <option value="2012/2013">2012/2013</option>
+        <option value="2011/2012">2011/2012</option>
     </select>
 
 
@@ -49,6 +50,9 @@
         else if (year == "2012/2013") {
             document.location = '@Url.Action("ColumnWithNegativeValues", "League", new { searchString = "2012/2013" })';
         }
+        else if (year == "2011/2012"){
+            document.location = '@Url.Action("ColumnWithNegativeValues", "League", new { searchString = "2011/2012" })';
+        }
     });
         @*$('#buttonNegChart').click(function () {
         document.location = '@Url.Action("ColumnWithNegativeValues", "League", new { searchString = "2013/2014" })';
@@ -63,6 +67,9 @@
         else if (year == "2012/2013")
         {
            document.location = '@Url.Action("Index", "League", new { searchString = "2012/2013" })';
+        }
+        else if (year == "2011/2012") {
+            document.location = '@Url.Action("Index", "League", new { searchString = "2011/2012" })';
         }
     }
 </script>

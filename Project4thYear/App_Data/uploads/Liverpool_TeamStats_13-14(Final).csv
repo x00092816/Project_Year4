@@ -1,13 +1,13 @@
-teamID,leagueID,year,player,goals,home_goals,away_goals,first_half_goals,second_half_goals
-2,1,2013/2014,Luis Suarez,31,17,14,17,14
-2,1,2013/2014,Daniel Sturridge,21,12,9,14,7
-2,1,2013/2014,Steven Gerrard,13,4,9,7,6
-2,1,2013/2014,Raheem Sterling,9,5,4,4,5
-2,1,2013/2014,Martin Skrtel,7,4,3,6,1
-2,1,2013/2014,Philippe Coutinho,5,2,3,2,3
-2,1,2013/2014,Jordan Henderson,4,3,1,2,2
-2,1,2013/2014,Daniel Agger,2,2,0,1,1
-2,1,2013/2014,Victor Moses,1,0,1,1,0
-2,1,2013/2014,Mamadou Sakho,1,1,0,0,1
-2,1,2013/2014,Jonathan Flanagan,1,0,1,0,1
-2,1,2013/2014,Joe Allen,1,0,1,1,0
+teamID,leagueID,year,goals,home_goals,away_goals,first_half_goals,second_half_goals,league_leagueID,player_playerID,competition,club,person
+2,1,2013/2014,31,17,14,17,14,0,0,Premier League,Liverpool,Luis Suarez
+2,1,2013/2014,21,12,9,14,7,0,0,Premier League,Liverpool,Daniel Sturridge
+2,1,2013/2014,13,4,9,7,6,0,0,Premier League,Liverpool,Steven Gerrard
+2,1,2013/2014,9,5,4,4,5,0,0,Premier League,Liverpool,Raheem Sterling
+2,1,2013/2014,7,4,3,6,1,0,0,Premier League,Liverpool,Martin Skrtel
+2,1,2013/2014,5,2,3,2,3,0,0,Premier League,Liverpool,Philippe Coutinho
+2,1,2013/2014,4,3,1,2,2,0,0,Premier League,Liverpool,Jordan Henderson
+2,1,2013/2014,2,2,0,1,1,0,0,Premier League,Liverpool,Daniel Agger
+2,1,2013/2014,1,0,1,1,0,0,0,Premier League,Liverpool,Victor Moses
+2,1,2013/2014,1,1,0,0,1,0,0,Premier League,Liverpool,Mamadou Sakho
+2,1,2013/2014,1,0,1,0,1,0,0,Premier League,Liverpool,Jonathan Flanagan
+2,1,2013/2014,1,0,1,1,0,0,0,Premier League,Liverpool,Joe Allen
