@@ -124,8 +124,8 @@ namespace Project4thYear.Controllers
                    //copy.DestinationTableName = "BulkImportDetails";
 
                    //copy.DestinationTableName = "League";
-                   copy.DestinationTableName = "Team";
-                   //copy.DestinationTableName = "League";
+                   //copy.DestinationTableName = "Team";
+                   copy.DestinationTableName = "Player";
 
                    copy.BatchSize = dt.Rows.Count;
                    try

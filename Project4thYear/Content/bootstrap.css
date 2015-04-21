@@ -4201,6 +4201,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-size: 18px;
   line-height: 20px;
   color: white !important;
+  /*background-image: url(~/App_Data/uploads/PremierLeagueLogoTeams.png);
+  background-size: 40px 40px;
+  height:40px;
+  margin:5px;
+  width:40px;*/
 }
 
 .navbar-brand:hover,

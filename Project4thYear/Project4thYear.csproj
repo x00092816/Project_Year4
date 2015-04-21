@@ -257,6 +257,8 @@
     <Content Include="Views\League\ChartPie.cshtml" />
     <Content Include="Views\League\ChartBar.cshtml" />
     <Content Include="Views\League\ColumnWithNegativeValues.cshtml" />
+    <Content Include="Views\Team\SemiCircleDonut.cshtml" />
+    <Content Include="Views\Team\SemiCircleDonut2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

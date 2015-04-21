@@ -97,9 +97,10 @@
             @Html.DisplayFor(modelItem => item.SecondHalfGoals)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TeamID }) |
+           
             @Html.ActionLink("Details", "Details", new { id=item.TeamID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TeamID })
+            @Html.ActionLink("Home Vs. Away Goals Chart", "SemiCircleDonut", new { id=item.TeamID }) |
+            @Html.ActionLink("1st Half Vs. 2nd Half Goals Chart", "SemiCircleDonut2", new { id = item.TeamID })
         </td>
     </tr>
 }

@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -89,10 +86,11 @@
             @Html.DisplayFor(modelItem => item.OwnGoals)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.PlayerID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PlayerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PlayerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PlayerID })
         </td>
-            @Html.ActionLink("Details", "Details", new { id=item.PlayerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PlayerID })
+          
     </tr>
 }
 
